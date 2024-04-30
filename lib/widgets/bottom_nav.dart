@@ -18,7 +18,7 @@ class _BottomNavState extends State<BottomNav> {
     if (index == 0) {
       Navigator.pushReplacementNamed(context, '/home');
     } else if (index == 1) {
-      //settings
+      Navigator.pushReplacementNamed(context, '/setting');
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:ta/components/expense_summary.dart';
 import 'package:ta/components/expense_tile.dart';
@@ -98,27 +99,26 @@ class _HomePageState extends State<HomePage> {
     return Consumer<ExpenseData>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hello',
-                  style: TextStyle(fontSize: 10),
-                  softWrap: true,
-                  maxLines: 3,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Arfa',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ],
+            title: Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hello,',
+                    style: TextStyle(fontSize: 10, color: Colors.grey),
+                    softWrap: true,
+                    maxLines: 3,
+                  ),
+                  Text(
+                    'Arfa',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
-            toolbarHeight: 100,
             ),
         floatingActionButton: FloatingActionButton(
           onPressed: addPengeluaran,
@@ -132,6 +132,18 @@ class _HomePageState extends State<HomePage> {
             children: [
             ExpenseSummary(awalMinggu: value.awalMingguHari()),
             SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: (){
+
+              },
+               child: Text("Button")
+              ),
+            Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Histori Transaksi",
+              style: TextStyle(fontWeight: FontWeight.bold),
+              )      
+              ),
             ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -144,7 +156,6 @@ class _HomePageState extends State<HomePage> {
               deleteTapped: (p0) => 
                 hapus(value.getAllExpenseList()[index])
               ,
-              
             )
           ),
             ],

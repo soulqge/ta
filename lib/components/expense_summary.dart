@@ -77,10 +77,11 @@ class ExpenseSummary extends StatelessWidget {
       builder: (context, value, child) => Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 25.0, bottom: 25.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [ 
-                Text("Weekly Total: ", style: TextStyle(fontWeight: FontWeight.bold),),
+                Text("Weekly Total: ", style: TextStyle(fontWeight: FontWeight.bold,),),
                 Text("\Rp. "+ calculateWeekTotal(value, senin, selasa, rabu, kamis, jumat, sabtu, minggu))
                 ],
             ),

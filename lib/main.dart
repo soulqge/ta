@@ -5,6 +5,7 @@ import 'package:ta/data/expense_data.dart';
 import 'package:ta/pages/forget_password.dart';
 import 'package:ta/pages/home.dart';
 import 'package:ta/pages/login.dart';
+import 'package:ta/pages/settings.dart';
 import 'package:ta/pages/signup.dart';
 
 void main() async {
@@ -20,11 +21,13 @@ void main() async {
       ],
       child: MaterialApp(
       initialRoute: '/login',
+      debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUp(),
         '/forget': (context) => ForgetPass(),
         '/home': (context) => HomePage(),
+        '/setting':(context) => SettingsPage()
       },
         ),
     ));

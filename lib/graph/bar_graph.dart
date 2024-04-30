@@ -23,38 +23,46 @@ class BarGraph extends StatelessWidget {
 
     myBarData.initBarData();
 
-    return BarChart(BarChartData(
-      maxY: maxY,
-      minY: 0,
-      titlesData: FlTitlesData(
-        show: true,
-        topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: true,
-          getTitlesWidget: bottomTiles
-          )
-        )
-      ),
-      gridData: FlGridData(show: false),
-      borderData: FlBorderData(show: false),
-      barGroups: myBarData.barData.map((data) => BarChartGroupData(x : data.x, barRods: [
-        BarChartRodData(
-          toY: data.y,
-          color: Colors.black,
-          width: 25,
-          borderRadius: BorderRadius.circular(2),
-          backDrawRodData: BackgroundBarChartRodData(
+    return Container(
+      height: 600,
+      width: 380,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.grey[200],),
+      child: Padding(
+        padding: EdgeInsets.only(top: 10, bottom: 10),
+        child: BarChart(BarChartData(
+          maxY: maxY,
+          minY: 0,
+          titlesData: FlTitlesData(
             show: true,
-            toY: maxY,
-            color: Colors.grey
-          )
+            topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: true,
+              getTitlesWidget: bottomTiles
+              )
+            )
+          ),
+          gridData: FlGridData(show: false),
+          borderData: FlBorderData(show: false),
+          barGroups: myBarData.barData.map((data) => BarChartGroupData(x : data.x, barRods: [
+            BarChartRodData(
+              toY: data.y,
+              color: Colors.black,
+              width: 25,
+              borderRadius: BorderRadius.circular(2),
+              backDrawRodData: BackgroundBarChartRodData(
+                show: true,
+                toY: maxY,
+                color: Colors.grey
+              )
+            )
+          ])).toList(),
+        
         )
-      ])).toList(),
-
-    )
-  );
+          ),
+      ),
+    );
   }
 
 }
@@ -62,7 +70,6 @@ final dayNames = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
 
 Widget bottomTiles(double value, TitleMeta meta) {
   late Widget text;
-
   if (value.toInt() >= 0 && value.toInt() <7){
     text = Text(dayNames[value.toInt()], style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10),);
   } else{

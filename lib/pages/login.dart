@@ -10,6 +10,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool centang = false;
 
+  final userController = TextEditingController();
+  final userPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderSide: BorderSide(color: Colors.grey)),
                             hintText: 'Username',
                             hintStyle: TextStyle(color: Colors.grey)),
+                            controller: userController,
                       ),
                     ),
                     SizedBox(
@@ -67,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                             suffixIcon: IconButton(
                                 onPressed: () {},
                                 icon: Icon(Icons.visibility_off))),
+                            controller: userPassword,
                       ),
                     ),
                   ],
