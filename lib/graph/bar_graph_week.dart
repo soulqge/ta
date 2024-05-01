@@ -26,7 +26,7 @@ class BarGraph extends StatelessWidget {
     return Container(
       height: 600,
       width: 380,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.grey[200],),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.white,),
       child: Padding(
         padding: EdgeInsets.only(top: 10, bottom: 10),
         child: BarChart(BarChartData(

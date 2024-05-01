@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ta/data/expense_data.dart';
-import 'package:ta/graph/bar_graph.dart';
+import 'package:ta/graph/bar_graph_week.dart';
 import 'package:ta/helper/date_time_helper.dart';
 
 class ExpenseSummary extends StatelessWidget {
