@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:ta/components/expense_summary.dart';
-import 'package:ta/components/expense_tile.dart';
-import 'package:ta/data/expense_data.dart';
-import 'package:ta/models/expense_item.dart';
-import 'package:ta/widgets/bottom_nav.dart';
+import 'package:TrackTheSpend/components/expense_summary.dart';
+import 'package:TrackTheSpend/components/expense_tile.dart';
+import 'package:TrackTheSpend/data/expense_data.dart';
+import 'package:TrackTheSpend/models/expense_item.dart';
+import 'package:TrackTheSpend/widgets/bottom_nav.dart';
 
 class HomePageMonth extends StatefulWidget {
   const HomePageMonth({super.key});

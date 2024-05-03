@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:ta/models/expense_item.dart';
+import 'package:TrackTheSpend/models/expense_item.dart';
 
 class HiveDataBase{
 

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ta/theme/mode.dart';
-import 'package:ta/widgets/bottom_nav.dart';
+import 'package:TrackTheSpend/theme/mode.dart';
+import 'package:TrackTheSpend/widgets/bottom_nav.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

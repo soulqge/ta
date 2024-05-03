@@ -1,4 +1,4 @@
-import 'package:ta/graph/individual_bar.dart';
+import 'package:TrackTheSpend/graph/individual_bar.dart';
 
 class BarData{
   final double jSen;

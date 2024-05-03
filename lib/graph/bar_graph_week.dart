@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:ta/graph/bar_data.dart';
+import 'package:TrackTheSpend/graph/bar_data.dart';
 
 class BarGraph extends StatelessWidget {
   final double? maxY;

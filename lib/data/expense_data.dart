@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ta/data/hive_database.dart';
-import 'package:ta/helper/date_time_helper.dart';
-import 'package:ta/models/expense_item.dart';
+import 'package:TrackTheSpend/data/hive_database.dart';
+import 'package:TrackTheSpend/helper/date_time_helper.dart';
+import 'package:TrackTheSpend/models/expense_item.dart';
 
 class ExpenseData extends ChangeNotifier{
 
