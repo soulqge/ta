@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:ta/data/expense_data.dart';
-import 'package:ta/pages/forget_password.dart';
+import 'package:ta/pages/about.dart';
+import 'package:ta/unused/forget_password.dart';
 import 'package:ta/pages/home.dart';
-import 'package:ta/pages/login.dart';
+import 'package:ta/unused/home_month.dart';
+import 'package:ta/unused/login.dart';
 import 'package:ta/pages/settings.dart';
-import 'package:ta/pages/signup.dart';
+import 'package:ta/unused/signup.dart';
 
 void main() async {
 
@@ -20,6 +22,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => ExpenseData())
       ],
       child: MaterialApp(
+      // theme: ThemeData.light(),
+      // darkTheme: ThemeData.dark(),
       initialRoute: '/login',
       debugShowCheckedModeBanner: false,
       routes: {
@@ -27,7 +31,9 @@ void main() async {
         '/signup': (context) => SignUp(),
         '/forget': (context) => ForgetPass(),
         '/home': (context) => HomePage(),
-        '/setting':(context) => SettingsPage()
+        '/homeM':(context) => HomePageMonth(),
+        '/setting':(context) => SettingsPage(),
+        '/about':(context) => AboutPage()
       },
         ),
     ));

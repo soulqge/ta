@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:ta/data/expense_data.dart';
 import 'package:ta/graph/bar_graph_week.dart';
 import 'package:ta/helper/date_time_helper.dart';
 
-class ExpenseSummary extends StatelessWidget {
+class ExpenseSummaryMonth extends StatelessWidget {
   final DateTime awalMinggu;
-  const ExpenseSummary({super.key, required this.awalMinggu});
+  const ExpenseSummaryMonth({super.key, required this.awalMinggu});
 
   double calculateMax(
     ExpenseData value, 
@@ -36,44 +35,14 @@ class ExpenseSummary extends StatelessWidget {
       return max == 0 ? 100 : max;
     }
 
-  String calculateWeekTotal(
-    ExpenseData value, 
-    String senin,
-    String selasa,
-    String rabu,
-    String kamis,
-    String jumat,
-    String sabtu,
-    String minggu,
-  ){
-      List<double> values = [
-      value.hitungPengeluaranHarian()[senin] ??0,
-      value.hitungPengeluaranHarian()[selasa] ??0,
-      value.hitungPengeluaranHarian()[rabu] ??0,
-      value.hitungPengeluaranHarian()[kamis] ??0,
-      value.hitungPengeluaranHarian()[jumat] ??0,
-      value.hitungPengeluaranHarian()[sabtu] ??0,
-      value.hitungPengeluaranHarian()[minggu] ??0,
-      ];
-      
-      double total = 0;
-
-      for(int i = 0; i < values.length; i++){
-        total += values[i];
-      }
-      return total.toStringAsFixed(2);
-  }
-
-  String calculateMonthTotal(ExpenseData value, Map<String, double> dailyTotals){
+  String calculateMonthlyTotal(ExpenseData value) {
+  Map<String, double> rangkumanPengeluaranBulanan = value.hitungPengeluaranBulanan();
   double total = 0;
-
-  dailyTotals.forEach((day, amount) {
-    total += amount;
-  });
-
+  for (var entry in rangkumanPengeluaranBulanan.entries) {
+    total += entry.value;
+  }
   return total.toStringAsFixed(2);
 }
-
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +63,7 @@ class ExpenseSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [ 
                 Text("Weekly Total: ", style: TextStyle(fontWeight: FontWeight.bold,),),
-                Text("\Rp. "+ calculateWeekTotal(value, senin, selasa, rabu, kamis, jumat, sabtu, minggu)),
+                Text("\Rp. "+ calculateMonthlyTotal(value))
                 ],
             ),
           ),

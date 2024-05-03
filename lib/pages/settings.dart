@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ta/theme/mode.dart';
 import 'package:ta/widgets/bottom_nav.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -38,46 +39,11 @@ class _SettingsPageState extends State<SettingsPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 233,
                   width: 380,
                   decoration: BoxDecoration(
                       color: Colors.white, borderRadius: BorderRadius.circular(4)),
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacementNamed(context, '/home');
-                            },
-                            child: Container(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.account_box),
-                                    SizedBox(width: 20,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text("My Account",
-                                        style: TextStyle(decoration: TextDecoration.none),
-                                        ),
-                                        Text("Make Changes To Your Account",
-                                        style: TextStyle(decoration: TextDecoration.none)
-                                        ),
-                                      ],
-                                    ),
-                                    Expanded(child: Container()),
-                                    Icon(Icons.keyboard_arrow_right)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                       Padding(
                         padding: EdgeInsets.all(8),
                         child: Container(
@@ -95,45 +61,20 @@ class _SettingsPageState extends State<SettingsPage> {
                                       ],
                                     ),
                                     Expanded(child: Container()),
-                                    Icon(Icons.swap_calls)
+                                    // Switch(
+                                    //   value: false, 
+                                    //   onChanged: mode(),
+                                    // )
                                   ],
                                 ),
                               ),
                             ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Card(
-                          child: InkWell(
-                            onTap: () {},
-                            child: Container(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.security_rounded),
-                                    SizedBox(width: 20,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text("Password",),
-                                        Text("Secure Your Application"),
-                                      ],
-                                    ),
-                                    Expanded(child: Container()),
-                                    Icon(Icons.keyboard_arrow_right)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 350,),
+              Expanded(child: Container()),
               Column(
                 children: [
                   Padding(
@@ -150,11 +91,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
+                          shadowColor: Colors.transparent,
                           child: InkWell(
+                            hoverColor: Colors.black,
                             onTap: () {
-                              //about
+                              Navigator.pushNamed(context, '/about');
                             },
                             child: Container(
+                              color: Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
@@ -181,11 +125,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
+                          shadowColor: Colors.transparent,
                           child: InkWell(
+                            hoverColor: Colors.black,
                             onTap: () {
-                              Navigator.pushReplacementNamed(context, '/home');
+                              Navigator.pushReplacementNamed(context, '/login');
                             },
                             child: Container(
+                              color: Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(

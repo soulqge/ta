@@ -8,19 +8,18 @@ import 'package:ta/data/expense_data.dart';
 import 'package:ta/models/expense_item.dart';
 import 'package:ta/widgets/bottom_nav.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageMonth extends StatefulWidget {
+  const HomePageMonth({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageMonth> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _HomePageState extends State<HomePageMonth>
     with SingleTickerProviderStateMixin {
   final nPengeluaranController = TextEditingController();
   final jPengeluaranController = TextEditingController();
   late TabController tabController;
-  
 
   @override
   void initState() {
@@ -123,7 +122,7 @@ class _HomePageState extends State<HomePage>
           backgroundColor: Colors.grey[100],
           foregroundColor: Colors.black,
         ),
-          backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[100],
         floatingActionButton: FloatingActionButton(
           onPressed: addPengeluaran,
           backgroundColor: Colors.black,
@@ -134,7 +133,47 @@ class _HomePageState extends State<HomePage>
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              ExpenseSummary(awalMinggu: value.awalMingguHari()),
+              SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: [
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, '/home');
+                            },
+                            child: Text("Weekly"),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.black),
+                              foregroundColor:
+                                  MaterialStatePropertyAll(Colors.white),
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            //
+                          },
+                          child: Text('Monthly'),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.black),
+                            foregroundColor:
+                                MaterialStatePropertyAll(Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(
                 height: 20,
               ),
