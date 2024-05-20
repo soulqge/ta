@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:TrackTheSpend/theme/mode.dart';
 import 'package:TrackTheSpend/widgets/bottom_nav.dart';
 
@@ -129,7 +130,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: InkWell(
                             hoverColor: Colors.black,
                             onTap: () {
-                              Navigator.pushReplacementNamed(context, '/login');
+                              SystemNavigator.pop();
                             },
                             child: Container(
                               color: Colors.white,
@@ -142,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text("Logout",
+                                        Text("Exit App",
                                         style: TextStyle(decoration: TextDecoration.none),
                                         ),
                                       ],
