@@ -1,12 +1,14 @@
+import 'package:TrackTheSpend/graph/bar_graph_week.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:TrackTheSpend/components/expense_summary.dart';
 import 'package:TrackTheSpend/components/expense_tile.dart';
 import 'package:TrackTheSpend/data/expense_data.dart';
 import 'package:TrackTheSpend/models/expense_item.dart';
-import 'package:TrackTheSpend/widgets/bottom_nav.dart';
+import 'package:TrackTheSpend/navbar/bottom_nav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -104,30 +106,21 @@ class _HomePageState extends State<HomePage>
         appBar: AppBar(
           title: Padding(
             padding: EdgeInsets.only(top: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hello,',
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                  softWrap: true,
-                  maxLines: 3,
-                ),
-                Text(
-                  'Arfa',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: Center(
+              child: Text(
+                '${DateFormat('EEEE, MMMM d, y').format(DateTime.now())}',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.inversePrimary),
+              ),
             ),
           ),
-          backgroundColor: Colors.grey[100],
-          foregroundColor: Colors.black,
+          backgroundColor: Theme.of(context).colorScheme.background,
+          foregroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
-          backgroundColor: Colors.grey[100],
+          backgroundColor: Theme.of(context).colorScheme.background,
         floatingActionButton: FloatingActionButton(
           onPressed: addPengeluaran,
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          foregroundColor: Theme.of(context).colorScheme.background,
           child: Icon(Icons.add),
         ),
         body: Padding(
@@ -142,14 +135,14 @@ class _HomePageState extends State<HomePage>
                   padding: EdgeInsets.only(left: 15),
                   child: Text(
                     "Histori Transaksi",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.inversePrimary),
                   )),
               ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: value.getAllExpenseList().length,
                   itemBuilder: (context, index) => ExpenseTile(
-                        nama: value.getAllExpenseList()[index].nama,
+                        nama: value.getAllExpenseList()[index].nama, 
                         jumlah: value.getAllExpenseList()[index].jumlah,
                         tanggal: value.getAllExpenseList()[index].tanggal,
                         deleteTapped: (p0) =>

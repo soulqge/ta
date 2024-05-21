@@ -25,22 +25,23 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items:  <BottomNavigationBarItem>[
         BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-              color: Colors.grey,
+              color: Theme.of(context).colorScheme.inversePrimary,
             ),
-            label: 'home'),
+            label: 'home',
+            ),
         BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              color: Colors.grey,
+              color: Theme.of(context).colorScheme.inversePrimary,
             ),
             label: 'Settings'),
       ],
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: Theme.of(context).colorScheme.inversePrimary,
+      unselectedItemColor: Theme.of(context).colorScheme.secondary,
       currentIndex: widget.selectedItem,
       onTap: changeSelectedNavBar,
     );

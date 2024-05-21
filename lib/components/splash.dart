@@ -33,21 +33,21 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.grey[200]
+          color: Theme.of(context).colorScheme.background
         ),
         child: Column(
           children: [
             Expanded(
               child: Center(
-                child: Text("TrackTheSpend")
+                child: Text("TrackTheSpend", style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),)
                 )
               ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 10),
-                  child: Text("Versi 1.0", // sesuasi sama versi asli e
-                  style: TextStyle(color: CupertinoColors.black),
+                  child: Text("Versi 1.1", // sesuasi sama versi asli e
+                  style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
                   )
                 ),
               )     

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:TrackTheSpend/data/expense_data.dart';
 import 'package:TrackTheSpend/graph/bar_graph_week.dart';
@@ -91,10 +90,10 @@ class ExpenseSummary extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 25.0, bottom: 25.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [ 
-                Text("Weekly Total: ", style: TextStyle(fontWeight: FontWeight.bold,),),
-                Text("\Rp. "+ calculateWeekTotal(value, senin, selasa, rabu, kamis, jumat, sabtu, minggu)),
+                Text("Weekly Total: ", style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.inversePrimary),),
+                Text("\Rp. "+ calculateWeekTotal(value, senin, selasa, rabu, kamis, jumat, sabtu, minggu), style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                 ],
             ),
           ),
@@ -109,7 +108,6 @@ class ExpenseSummary extends StatelessWidget {
               jJum: value.hitungPengeluaranHarian()[jumat] ?? 0, 
               jSab: value.hitungPengeluaranHarian()[sabtu] ?? 0, 
               jMin: value.hitungPengeluaranHarian()[minggu] ?? 0,
-          
               ),
           ),
         ],

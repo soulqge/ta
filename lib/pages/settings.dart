@@ -1,9 +1,10 @@
+import 'package:TrackTheSpend/theme/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
-import 'package:TrackTheSpend/theme/mode.dart';
-import 'package:TrackTheSpend/widgets/bottom_nav.dart';
+import 'package:TrackTheSpend/navbar/bottom_nav.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -26,12 +27,13 @@ class _SettingsPageState extends State<SettingsPage> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 14,
+              color: Theme.of(context).colorScheme.inversePrimary
             ),
           )),
         ),
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Align(
         alignment: Alignment.topCenter,
           child: Column(
@@ -42,7 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Container(
                   width: 380,
                   decoration: BoxDecoration(
-                      color: Colors.white, borderRadius: BorderRadius.circular(4)),
+                      color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(4)),
                   child: Column(
                     children: [
                       Padding(
@@ -52,20 +54,32 @@ class _SettingsPageState extends State<SettingsPage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.nightlight_round),
+                                    Icon(Icons.nightlight_round,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,),
                                     SizedBox(width: 20,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text("Night Mode",),
-                                        Text("Change Application Theme"),
+                                        Text("Night Mode", style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inversePrimary),),
+                                        Text("Change Application Theme", style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inversePrimary),),
                                       ],
                                     ),
                                     Expanded(child: Container()),
-                                    // Switch(
-                                    //   value: false, 
-                                    //   onChanged: mode(),
-                                    // )
+                                    Switch(
+                                      value: Provider.of<ThemeProvider>(context, listen: false).isDarkMode, 
+                                      onChanged: (value) =>  Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
+                                      activeColor: Colors.grey,
+                                      inactiveTrackColor: Colors.white,
+                                      inactiveThumbColor: Colors.black,
+                                    )
                                   ],
                                 ),
                               ),
@@ -84,7 +98,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       height: 128 ,
                       width: 380,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(4)
                       ),
                       child: Column(
@@ -92,30 +106,35 @@ class _SettingsPageState extends State<SettingsPage> {
                         Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
+                          color: Theme.of(context).colorScheme.surface,
                           shadowColor: Colors.transparent,
                           child: InkWell(
                             hoverColor: Colors.black,
                             onTap: () {
-                              Navigator.pushNamed(context, '/about');
+                              Navigator.pushReplacementNamed(context, '/about');
                             },
                             child: Container(
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.surface,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.lightbulb_outline),
+                                    Icon(Icons.lightbulb_outline, color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary),
                                     SizedBox(width: 20,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text("About App",
-                                        style: TextStyle(decoration: TextDecoration.none),
+                                        style: TextStyle(decoration: TextDecoration.none, color: Theme.of(context)
+                                                    .colorScheme
+                                                    .inversePrimary),
                                         ),
                                       ],
                                     ),
                                     Expanded(child: Container()),
-                                    Icon(Icons.keyboard_arrow_right)
+                                    Icon(Icons.keyboard_arrow_right, color: Theme.of(context).colorScheme.inversePrimary)
                                   ],
                                 ),
                               ),
@@ -126,6 +145,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
+                          color: Theme.of(context).colorScheme.surface,
                           shadowColor: Colors.transparent,
                           child: InkWell(
                             hoverColor: Colors.black,
@@ -133,23 +153,29 @@ class _SettingsPageState extends State<SettingsPage> {
                               SystemNavigator.pop();
                             },
                             child: Container(
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.surface,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.logout),
+                                    Icon(Icons.logout, color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary),
                                     SizedBox(width: 20,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text("Exit App",
-                                        style: TextStyle(decoration: TextDecoration.none),
+                                        style: TextStyle(decoration: TextDecoration.none, color: Theme.of(context)
+                                                    .colorScheme
+                                                    .inversePrimary),
                                         ),
                                       ],
                                     ),
                                     Expanded(child: Container()),
-                                    Icon(Icons.keyboard_arrow_right)
+                                    Icon(Icons.keyboard_arrow_right, color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary)
                                   ],
                                 ),
                               ),

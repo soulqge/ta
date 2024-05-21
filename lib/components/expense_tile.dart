@@ -29,9 +29,15 @@ class ExpenseTile extends StatelessWidget {
         ]
         ),
       child: ListTile(
-        title: Text(nama),
-        subtitle: Text(tanggal.day.toString() + '/' + tanggal.month.toString() + '/' + tanggal.year.toString()),
-        trailing: Text('Rp. '+jumlah),
+        title: Text(nama,
+        style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+        ),
+        subtitle: Text(tanggal.day.toString() + '/' + tanggal.month.toString() + '/' + tanggal.year.toString(), style:
+                TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
+        trailing: Text('Rp. '+jumlah,
+        style:
+                TextStyle(color: Theme.of(context).colorScheme.inversePrimary)
+        ),
       ),
     );
   }
